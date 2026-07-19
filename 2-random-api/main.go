@@ -9,7 +9,7 @@ import (
 const port = ":8085"
 
 func handleRandomInt(w http.ResponseWriter, r *http.Request) {
-	rand := rand.Intn(6)
+	rand := rand.Intn(6) + 1
 
 	fmt.Fprint(w, rand)
 }
