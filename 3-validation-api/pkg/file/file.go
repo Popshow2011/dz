@@ -10,7 +10,7 @@ type FileDeps struct {
 	path string
 }
 
-type FileWrite struct {
+type File struct {
 	Hash  string
 	Email string
 }
@@ -35,11 +35,11 @@ func ReadFile(deps FileDeps) ([]byte, error) {
 }
 
 func WriteFile(path string, email string, hash string) error {
-	item := FileWrite{
+	item := File{
 		Email: email,
 		Hash:  hash,
 	}
-	var items []FileWrite
+	var items []File
 	data, err := os.ReadFile(path)
 	if err == nil {
 		err = json.Unmarshal(data, &items)
