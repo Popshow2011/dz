@@ -90,20 +90,16 @@ func (handler *VerifyHandler) Verify() http.HandlerFunc {
 		var newJson []file.File
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
-
+		var result bool
 		for _, item := range items {
 			if item.Hash != hash {
 				newJson = append(newJson, item)
-
-				response := false
-				json.NewEncoder(w).Encode(response)
+				continue
 			}
-
-			response := false
-			json.NewEncoder(w).Encode(response)
-			fmt.Println(item.Hash)
+			result = true
 		}
 
+		json.NewEncoder(w).Encode(result)
 		data, err := json.MarshalIndent(newJson, "", "  ")
 		if err != nil {
 			fmt.Println("marshal error: %w", err)
