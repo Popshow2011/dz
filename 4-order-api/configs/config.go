@@ -19,7 +19,7 @@ type DbConfig struct {
 	DB_NAME     string
 }
 
-func NewConfig() *Config {
+func LoadConfig() *Config {
 	err := godotenv.Load()
 	if err != nil {
 		panic("Don`t loaded env file")

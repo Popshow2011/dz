@@ -6,6 +6,6 @@ import (
 )
 
 func main() {
-	config := configs.NewConfig()
+	config := configs.LoadConfig()
 	fmt.Println(config)
 }
