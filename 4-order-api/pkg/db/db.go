@@ -8,7 +8,7 @@ import (
 )
 
 type Db struct {
-	*gorm.Config
+	*gorm.DB
 }
 
 func NewDb(conf *configs.Config) *Db {
@@ -18,5 +18,5 @@ func NewDb(conf *configs.Config) *Db {
 		panic(err)
 	}
 
-	return &Db{db.Config}
+	return &Db{db}
 }
