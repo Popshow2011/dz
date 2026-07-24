@@ -12,7 +12,7 @@ func Logger(next http.Handler) http.Handler {
 		logrus.WithFields(logrus.Fields{
 			"Path":   r.URL.Path,
 			"Method": r.Method,
-		})
+		}).Info("A path and method")
 
 		next.ServeHTTP(w, r)
 	})
