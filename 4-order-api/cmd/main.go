@@ -4,6 +4,7 @@ import (
 	"dz/4-order-api/configs"
 	"dz/4-order-api/internal/product"
 	"dz/4-order-api/pkg/db"
+	"dz/4-order-api/pkg/middleware"
 	"fmt"
 	"net/http"
 )
@@ -23,7 +24,7 @@ func main() {
 
 	server := http.Server{
 		Addr:    config.Port,
-		Handler: router,
+		Handler: middleware.Logger(router),
 	}
 
 	if err := server.ListenAndServe(); err != nil {
