@@ -7,12 +7,15 @@ import (
 	"dz/4-order-api/pkg/middleware"
 	"fmt"
 	"net/http"
+
+	"github.com/sirupsen/logrus"
 )
 
 func main() {
 	config := configs.LoadConfig()
 	db := db.NewDb(config)
 	router := http.NewServeMux()
+	logrus.SetFormatter(&logrus.JSONFormatter{})
 
 	//providers
 	productRepo := product.NewProductRepository(db)

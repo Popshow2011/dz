@@ -1,7 +1,7 @@
 package product
 
 type ProductCreatedRequest struct {
-	Name        string   `json:"name" valdate:"required"`
+	Name        string   `json:"name" validate:"required"`
 	Description string   `json:"description"`
 	Images      []string `json:"images"`
 }
